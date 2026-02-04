@@ -1,0 +1,173 @@
+* { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 100px; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Folklórny vzor pozadie */
+.folk-pattern-bg {
+    background-color: #f5e6d3;
+    background-image:
+            repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(233,30,140,.05) 35px, rgba(233,30,140,.05) 70px),
+            repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(155,77,150,.05) 35px, rgba(155,77,150,.05) 70px);
+}
+
+/* Folklórny ornament border */
+.folk-border {
+    border-top: 3px solid #1e3a5f;
+    border-bottom: 3px solid #1e3a5f;
+    position: relative;
+}
+
+.folk-border::before,
+.folk-border::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+            90deg,
+            #e91e8c 0px,
+            #e91e8c 12px,
+            #9b4d96 12px,
+            #9b4d96 24px,
+            #4a90e2 24px,
+            #4a90e2 36px,
+            transparent 36px,
+            transparent 48px
+    );
+}
+
+.folk-border::before {
+    top: -8px;
+}
+
+.folk-border::after {
+    bottom: -8px;
+}
+
+/* Folklórne kvety dekorácia */
+.folk-flower {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.folk-flower::before {
+    content: "✿";
+    font-size: 60px;
+    color: #e91e8c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 20px rgba(233,30,140,.3);
+}
+
+/* Vyšívaný pattern */
+.embroidery-pattern {
+    background-image:
+            radial-gradient(circle at 20% 30%, rgba(233,30,140,.15) 2px, transparent 2px),
+            radial-gradient(circle at 60% 70%, rgba(155,77,150,.15) 2px, transparent 2px),
+            radial-gradient(circle at 80% 20%, rgba(74,144,226,.15) 2px, transparent 2px),
+            radial-gradient(circle at 30% 80%, rgba(95,184,120,.15) 2px, transparent 2px);
+    background-size: 40px 40px, 45px 45px, 38px 38px, 42px 42px;
+    background-position: 0 0, 20px 20px, 10px 30px, 30px 10px;
+}
+
+/* Handwritten title effect */
+.handwritten-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    text-shadow: 2px 2px 0 rgba(233,30,140,.2);
+}
+
+/* Card s folklórnym rámom */
+.folk-card {
+    position: relative;
+    border: 3px solid #1e3a5f;
+    background: white;
+}
+
+.folk-card::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 2px solid #e91e8c;
+    pointer-events: none;
+}
+
+/* Animácie */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes pulse-folk {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .8; transform: scale(1.05); }
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+.pulse-folk {
+    animation: pulse-folk 3s ease-in-out infinite;
+}
+
+/* Reveal on scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Folklórna vlnovka */
+.folk-wave {
+    position: relative;
+    height: 60px;
+    background: transparent;
+    overflow: hidden;
+}
+
+.folk-wave::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: repeating-linear-gradient(
+            90deg,
+            #e91e8c 0px,
+            #e91e8c 15px,
+            #9b4d96 15px,
+            #9b4d96 30px,
+            #4a90e2 30px,
+            #4a90e2 45px,
+            #5fb878 45px,
+            #5fb878 60px
+    );
+}
+
+.folk-wave::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: radial-gradient(circle at 30px 30px, transparent 28px, #f5e6d3 29px);
+    background-size: 60px 60px;
+    background-repeat: repeat-x;
+}

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="sk" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Čilejkárska desina – Bežecké podujatie</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Italiana&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1e3a5f",
+            navy: "#0f1f38",
+            folk: {
+              pink: "#e91e8c",
+              purple: "#9b4d96",
+              blue: "#4a90e2",
+              green: "#5fb878",
+              cream: "#f5e6d3",
+            },
+          },
+          fontFamily: {
+            sans: ["Open Sans", "sans-serif"],
+            handwritten: ["Caveat", "cursive"],
+            serif: ["Italiana", "serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+
+  </style>
+</head>
+
+<body class="font-sans bg-folk-cream text-navy">
+
+<!-- ====== FOLKLÓRNA NAVIGÁCIA ====== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-primary shadow-lg">
+  <div class="folk-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#top" class="flex items-center gap-4 group">
+          <div class="relative">
+            <img src="cdlogo.jpg" alt="Logo Čilejkárska desina"
+                 class="w-14 h-14 rounded-full border-4 border-folk-pink shadow-lg" />
+          </div>
+          <div class="hidden sm:block">
+            <div class="handwritten-title text-3xl text-primary">
+              Čilejkárska <span class="text-folk-pink">DESINA</span>
+            </div>
+            <div class="text-xs font-bold text-folk-purple uppercase tracking-wider">2.5.2026 • Tekov</div>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-2">
+          <a href="#about" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">O pretekoch</a>
+          <a href="#propozicie" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Propozície</a>
+          <a href="#route" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Trasa</a>
+          <a href="#contact" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Kontakt</a>
+        </div>
+
+        <!-- CTA + Menu -->
+        <div class="flex items-center gap-3">
+          <a href="#registration"
+             class="hidden sm:inline-flex items-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-6 py-3 border-2 border-navy shadow-lg transition-all">
+            <span class="material-icons text-lg">how_to_reg</span>
+            <span>Registrácia</span>
+          </a>
+
+          <button id="menuBtn"
+                  class="p-2.5 text-primary hover:bg-folk-pink hover:text-white border-2 border-primary transition"
+                  aria-label="Menu">
+            <span class="material-icons">menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== DRAWER OVERLAY ====== -->
+<div id="overlay" class="fixed inset-0 bg-navy/60 backdrop-blur-sm z-[60] hidden transition-opacity"></div>
+
+<!-- ====== FOLKLÓRNY DRAWER ====== -->
+<aside id="drawer"
+       class="fixed top-0 right-0 h-full w-[380px] max-w-[90vw] z-[70]
+              bg-folk-cream border-l-4 border-folk-pink shadow-2xl translate-x-full transition-transform duration-300">
+  <div class="h-full flex flex-col embroidery-pattern">
+    <!-- Header -->
+    <div class="p-6 border-b-4 border-primary bg-white">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+          <img src="cdlogo.jpg" class="w-12 h-12 rounded-full border-3 border-folk-pink shadow-md" alt="Logo" />
+          <div>
+            <div class="handwritten-title text-2xl text-primary">Menu</div>
+            <div class="text-xs text-folk-purple font-bold">Čilejkárska desina</div>
+          </div>
+        </div>
+        <button id="closeBtn" class="p-2 text-primary hover:bg-folk-pink hover:text-white transition border-2 border-primary">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="flex-1 overflow-y-auto p-6">
+      <div class="space-y-3 mb-8">
+        <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="#about">
+          <div class="w-12 h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center">
+            <span class="material-icons text-folk-pink text-2xl">info</span>
+          </div>
+          <div>
+            <div class="font-bold text-navy">O pretekoch</div>
+            <div class="text-xs text-folk-purple">čo vás čaká</div>
+          </div>
+        </a>
+
+        <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="#route">
+          <div class="w-12 h-12 bg-folk-purple/20 border-2 border-folk-purple flex items-center justify-center">
+            <span class="material-icons text-folk-purple text-2xl">map</span>
+          </div>
+          <div>
+            <div class="font-bold text-navy">Trasa</div>
+            <div class="text-xs text-folk-purple">mapa + parametre</div>
+          </div>
+        </a>
+
+        <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="#propozicie">
+          <div class="w-12 h-12 bg-folk-green/20 border-2 border-folk-green flex items-center justify-center">
+            <span class="material-icons text-folk-green text-2xl">description</span>
+          </div>
+          <div>
+            <div class="font-bold text-navy">Propozície</div>
+            <div class="text-xs text-folk-purple">pravidlá + ceny</div>
+          </div>
+        </a>
+
+        <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="#contact">
+          <div class="w-12 h-12 bg-folk-blue/20 border-2 border-folk-blue flex items-center justify-center">
+            <span class="material-icons text-folk-blue text-2xl">call</span>
+          </div>
+          <div>
+            <div class="font-bold text-navy">Kontakt</div>
+            <div class="text-xs text-folk-purple">info + miesto</div>
+          </div>
+        </a>
+
+        <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="#registration">
+          <div class="w-12 h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center">
+            <span class="material-icons text-folk-pink text-2xl">how_to_reg</span>
+          </div>
+          <div>
+            <div class="font-bold text-navy">Registrácia</div>
+            <div class="text-xs text-folk-purple">prihlásiť sa</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="space-y-3">
+        <a href="#registration"
+           class="drawerLink w-full flex items-center justify-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-6 py-4 border-3 border-navy shadow-lg transition-all">
+          <span class="material-icons">bolt</span>
+          <span>Registrovať sa teraz</span>
+        </a>
+        <a href="https://mapy.com/s/necuhuzuge" target="_blank" rel="noopener"
+           class="w-full flex items-center justify-center gap-2 bg-white border-3 border-navy
+                  text-navy font-bold px-6 py-4 hover:bg-folk-cream transition">
+          <span class="material-icons">open_in_new</span>
+          <span>Otvoriť trasu</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ====== FOLKLÓRNE HERO ====== -->
+<section id="top" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy">
+  <!-- Folklórne pozadie -->
+  <div class="absolute inset-0 bg-gradient-to-br from-navy via-primary to-navy opacity-90"></div>
+  <div class="absolute inset-0 embroidery-pattern opacity-30"></div>
+
+  <!-- Folklórne kvety -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+    <div class="absolute left-[5%] top-[10%] text-8xl text-folk-pink float-animation" style="animation-delay: 0s;">✿</div>
+    <div class="absolute right-[8%] top-[15%] text-7xl text-folk-purple float-animation" style="animation-delay: 1s;">❀</div>
+    <div class="absolute left-[10%] top-[40%] text-6xl text-folk-blue float-animation" style="animation-delay: 2s;">✿</div>
+    <div class="absolute right-[5%] top-[50%] text-8xl text-folk-green float-animation" style="animation-delay: 1.5s;">❀</div>
+    <div class="absolute left-[15%] bottom-[15%] text-7xl text-folk-pink float-animation" style="animation-delay: 0.5s;">✿</div>
+    <div class="absolute right-[12%] bottom-[20%] text-7xl text-folk-purple float-animation" style="animation-delay: 2.5s;">❀</div>
+  </div>
+
+  <!-- Vinič ilustrácia -->
+  <div class="absolute top-0 left-0 right-0 h-32 overflow-hidden pointer-events-none opacity-20">
+    <svg class="w-full h-full" viewBox="0 0 1200 100" fill="none">
+      <path d="M0,50 Q50,20 100,50 T200,50 T300,50 T400,50 T500,50 T600,50 T700,50 T800,50 T900,50 T1000,50 T1100,50 T1200,50"
+            stroke="#e91e8c" stroke-width="3" fill="none"/>
+      <circle cx="100" cy="30" r="8" fill="#9b4d96"/>
+      <circle cx="300" cy="70" r="8" fill="#4a90e2"/>
+      <circle cx="500" cy="30" r="8" fill="#5fb878"/>
+      <circle cx="700" cy="70" r="8" fill="#e91e8c"/>
+      <circle cx="900" cy="30" r="8" fill="#9b4d96"/>
+    </svg>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center">
+    <div class="mb-8">
+      <img src="cdlogo.jpg" alt="Čilejkárska desina"
+           class="w-40 h-40 sm:w-48 sm:h-48 mx-auto shadow-2xl rounded-full border-8 border-white pulse-folk" />
+    </div>
+
+    <div class="inline-flex items-center gap-3 px-6 py-3 bg-white border-4 border-folk-pink text-folk-pink text-sm font-bold tracking-wide uppercase mb-6 shadow-lg">
+      <span class="material-icons text-lg">emoji_events</span>
+      <span>1. ročník • Komunitné podujatie</span>
+    </div>
+
+    <h1 class="handwritten-title text-6xl sm:text-7xl lg:text-8xl text-white mb-6 leading-tight">
+      Tradičný beh<br/>v srdci <span class="text-folk-pink">Tekova</span>
+    </h1>
+
+    <p class="text-xl sm:text-2xl text-folk-cream mb-12 max-w-2xl mx-auto leading-relaxed font-serif">
+      10 km, 5 km a detské behy. Príď si zabehnúť, povzbudiť alebo stráviť deň s komunitou.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#registration"
+         class="inline-flex items-center justify-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-black py-5 px-10 border-4 border-white shadow-xl hover:shadow-2xl transition-all text-lg uppercase tracking-wide">
+        <span>Zaregistruj sa teraz</span>
+        <span class="material-icons">arrow_forward</span>
+      </a>
+      <a href="#route"
+         class="inline-flex items-center justify-center gap-2 bg-white hover:bg-folk-cream text-navy font-black py-5 px-10 border-4 border-white transition-all text-lg uppercase tracking-wide">
+        <span>Pozrieť trasu</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Folklórna vlnovka -->
+<div class="folk-wave"></div>
+
+<!-- ====== STATS CARDS ====== -->
+<section class="relative -mt-20 z-20 px-6 pb-16">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-navy border-4 border-folk-pink p-8 text-center shadow-xl">
+        <div class="w-16 h-16 mx-auto mb-4 bg-folk-pink/30 border-3 border-folk-pink flex items-center justify-center">
+          <span class="material-icons text-folk-pink text-3xl">map</span>
+        </div>
+        <div class="text-xs font-bold text-folk-pink uppercase tracking-wide mb-2">Trasa</div>
+        <div class="handwritten-title text-3xl text-white">10 km • 5 km</div>
+      </div>
+
+      <div class="bg-navy border-4 border-folk-purple p-8 text-center shadow-xl">
+        <div class="w-16 h-16 mx-auto mb-4 bg-folk-purple/30 border-3 border-folk-purple flex items-center justify-center">
+          <span class="material-icons text-folk-purple text-3xl">event</span>
+        </div>
+        <div class="text-xs font-bold text-folk-purple uppercase tracking-wide mb-2">Dátum</div>
+        <div class="handwritten-title text-3xl text-white">2. 5. 2026</div>
+      </div>
+
+      <div class="bg-navy border-4 border-folk-blue p-8 text-center shadow-xl">
+        <div class="w-16 h-16 mx-auto mb-4 bg-folk-blue/30 border-3 border-folk-blue flex items-center justify-center">
+          <span class="material-icons text-folk-blue text-3xl">timer</span>
+        </div>
+        <div class="text-xs font-bold text-folk-blue uppercase tracking-wide mb-2">Štarty</div>
+        <div class="handwritten-title text-3xl text-white">9:00 • 10:30 • 11:45</div>
+        <div class="text-xs text-white/70 font-bold mt-2">deti • 5 km • 10 km</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about" class="py-24 px-6 bg-white embroidery-pattern">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <div class="inline-block px-5 py-2 bg-folk-pink/20 border-2 border-folk-pink text-folk-pink font-bold uppercase tracking-wide mb-4 text-sm">
+        O podujatí
+      </div>
+      <h2 class="handwritten-title text-5xl sm:text-6xl text-navy mb-6">
+        Viac než len <span class="text-folk-pink">beh</span>
+      </h2>
+      <p class="text-lg text-navy/80 leading-relaxed max-w-3xl mx-auto font-serif">
+        Čilejkárska desina nie je len obyčajný beh. Je to oslava pohybu a tradícií regiónu Tekov.
+        Čaká vás trať v krásnom prostredí a príjemná komunitná atmosféra.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="reveal bg-navy border-4 border-folk-pink p-8 shadow-xl">
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-pink/30 border-3 border-folk-pink flex items-center justify-center">
+            <span class="material-icons text-folk-pink text-3xl">workspace_premium</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Unikátne medaily</h3>
+            <p class="text-folk-cream leading-relaxed">
+              Pamätná medaila s folklórnym motívom pre každého účastníka.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal bg-navy border-4 border-folk-purple p-8 shadow-xl">
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-purple/30 border-3 border-folk-purple flex items-center justify-center">
+            <span class="material-icons text-folk-purple text-3xl">restaurant</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Tradičné občerstvenie</h3>
+            <p class="text-folk-cream leading-relaxed">
+              Lokálne špeciality a po behu zaslúžené doplnenie energie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Folklórna vlnovka -->
+<div class="folk-wave"></div>
+
+<!-- ====== PROPOZÍCIE ====== -->
+<section id="propozicie" class="py-24 px-6 folk-pattern-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <div class="inline-block px-5 py-2 bg-folk-green/20 border-2 border-folk-green text-folk-green font-bold uppercase tracking-wide mb-4 text-sm">
+        Propozície
+      </div>
+      <h2 class="handwritten-title text-5xl sm:text-6xl text-navy mb-6">
+        Všetko čo <span class="text-folk-pink">potrebujete vedieť</span>
+      </h2>
+      <p class="text-lg text-navy/80 leading-relaxed max-w-3xl mx-auto font-serif">
+        Detailné informácie o preteku, pravidlách, kategóriách a cenách.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <!-- Základné info -->
+      <div class="reveal bg-navy border-4 border-folk-pink p-8 shadow-xl">
+        <div class="flex items-start gap-5 mb-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-pink/30 border-3 border-folk-pink flex items-center justify-center">
+            <span class="material-icons text-folk-pink text-3xl">event_note</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Základné informácie</h3>
+          </div>
+        </div>
+        <div class="space-y-4 text-folk-cream">
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-pink mt-0.5">check_circle</span>
+            <div>
+              <strong class="text-white">Dátum:</strong> 2. máj 2026 (sobota)
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-pink mt-0.5">check_circle</span>
+            <div>
+              <strong class="text-white">Miesto:</strong> Kultúrny dom Hronské Kľačany
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-pink mt-0.5">check_circle</span>
+            <div>
+              <strong class="text-white">Kategórie:</strong> 10 km, 5 km, detské behy
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-pink mt-0.5">check_circle</span>
+            <div>
+              <strong class="text-white">Povrch:</strong> Asfalt a poľné cesty
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Štarty a kategórie -->
+      <div class="reveal bg-navy border-4 border-folk-purple p-8 shadow-xl">
+        <div class="flex items-start gap-5 mb-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-purple/30 border-3 border-folk-purple flex items-center justify-center">
+            <span class="material-icons text-folk-purple text-3xl">schedule</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Časový program</h3>
+          </div>
+        </div>
+        <div class="space-y-4 text-folk-cream">
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-purple mt-0.5">access_time</span>
+            <div><strong class="text-white">08:00</strong> – Prezentácia (všetky kategórie) – KD Hronské Kľačany</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-purple mt-0.5">flag</span>
+            <div><strong class="text-white">09:00</strong> – Štart detských behov</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-purple mt-0.5">flag</span>
+            <div><strong class="text-white">10:30</strong> – Štart 5 km</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-purple mt-0.5">flag</span>
+            <div><strong class="text-white">11:45</strong> – Štart 10 km</div>
+          </div>
+
+          <div class="text-xs text-white/70 pt-2">
+            Prezentácia sa končí vždy <strong>20 min pred štartom</strong> danej kategórie.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Štartovné -->
+      <div class="reveal bg-navy border-4 border-folk-blue p-8 shadow-xl">
+        <div class="flex items-start gap-5 mb-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-blue/30 border-3 border-folk-blue flex items-center justify-center">
+            <span class="material-icons text-folk-blue text-3xl">payments</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Štartovné</h3>
+          </div>
+        </div>
+        <div class="space-y-4 text-folk-cream">
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-blue mt-0.5">child_care</span>
+            <div><strong class="text-white">Deti do 6 rokov:</strong> zdarma</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-blue mt-0.5">school</span>
+            <div><strong class="text-white">ZŠ (7 – 15 rokov):</strong> 2 € (detské behy)</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-blue mt-0.5">euro</span>
+            <div><strong class="text-white">5 km:</strong> 8 €</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-blue mt-0.5">euro</span>
+            <div><strong class="text-white">10 km:</strong> 12 €</div>
+          </div>
+
+          <div class="text-xs text-white/70 pt-2">
+            Ak sa účastník z detskej kategórie prihlási na 5/10 km, platí podľa danej disciplíny.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Čo dostanete -->
+      <div class="reveal bg-navy border-4 border-folk-green p-8 shadow-xl">
+        <div class="flex items-start gap-5 mb-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-green/30 border-3 border-folk-green flex items-center justify-center">
+            <span class="material-icons text-folk-green text-3xl">card_giftcard</span>
+          </div>
+          <div>
+            <h3 class="text-2xl font-black text-white mb-3">Čo dostanete</h3>
+          </div>
+        </div>
+        <div class="space-y-4 text-folk-cream">
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-green mt-0.5">workspace_premium</span>
+            <div>
+              Unikátna medaila s folklórnym motívom
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-green mt-0.5">restaurant</span>
+            <div>
+              Občerstvenie na trati a v cieli
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-green mt-0.5">emoji_events</span>
+            <div>
+              Ceny pre víťazov v kategóriách
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-icons text-folk-green mt-0.5">photo_camera</span>
+            <div>
+              Fotografie zdarma
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download propozícií -->
+    <div class="reveal text-center">
+      <div class="folk-card p-10 bg-white inline-block shadow-2xl">
+        <div class="w-20 h-20 mx-auto mb-6 bg-folk-pink/20 border-4 border-folk-pink flex items-center justify-center">
+          <span class="material-icons text-folk-pink text-4xl">description</span>
+        </div>
+        <h3 class="handwritten-title text-3xl text-navy mb-4">Kompletné propozície</h3>
+        <p class="text-navy/70 mb-6 max-w-md">
+          Stiahnite si PDF s úplnými propozíciami preteku vrátane všetkých pravidiel a kategórií.
+        </p>
+        <a href="Propozície-behu-ČD-10.pdf" download class="inline-flex items-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-black py-4 px-8 border-3 border-navy shadow-xl transition-all uppercase tracking-wide">
+          <span class="material-icons">download</span>
+          <span>Stiahnuť propozície (PDF)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Folklórna vlnovka -->
+<div class="folk-wave"></div>
+
+<!-- ====== ROUTE ====== -->
+<section id="route" class="py-24 px-6 folk-pattern-bg">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <div class="inline-block px-5 py-2 bg-folk-purple/20 border-2 border-folk-purple text-folk-purple font-bold uppercase tracking-wide mb-4 text-sm">
+        Trasa preteku
+      </div>
+      <h2 class="handwritten-title text-5xl sm:text-6xl text-navy mb-6">
+        Poznaj svoju <span class="text-folk-pink">trať</span>
+      </h2>
+    </div>
+
+    <div class="reveal folk-card overflow-hidden shadow-2xl mb-6">
+      <div class="aspect-video">
+        <iframe
+                src="https://mapy.com/s/kohogohuma"
+                class="w-full h-full"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen
+                title="Mapa trate – Čilejkárska desina">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="flex justify-end mb-8 reveal">
+      <a href="https://mapy.com/s/kohogohuma" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-folk-pink hover:text-folk-purple font-bold transition">
+        <span>Otvoriť v Mapy.com</span>
+        <span class="material-icons">open_in_new</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="reveal bg-navy border-4 border-folk-pink p-6 shadow-xl text-center">
+        <div class="text-xs font-bold text-folk-pink uppercase tracking-wide mb-2">Povrch</div>
+        <div class="handwritten-title text-2xl text-white">Asfalt / poľné cesty</div>
+      </div>
+
+      <div class="reveal bg-navy border-4 border-folk-purple p-6 shadow-xl text-center">
+        <div class="text-xs font-bold text-folk-purple uppercase tracking-wide mb-2">Prevýšenie</div>
+        <div class="handwritten-title text-2xl text-white">~ 2 m</div>
+      </div>
+
+      <div class="reveal bg-navy border-4 border-folk-blue p-6 shadow-xl text-center">
+        <div class="text-xs font-bold text-folk-blue uppercase tracking-wide mb-2">Občerstvenie</div>
+        <div class="handwritten-title text-2xl text-white">2 stanice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Folklórna vlnovka -->
+<div class="folk-wave"></div>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact" class="py-24 px-6 bg-white embroidery-pattern">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <div class="inline-block px-5 py-2 bg-folk-blue/20 border-2 border-folk-blue text-folk-blue font-bold uppercase tracking-wide mb-4 text-sm">
+        Kontakt
+      </div>
+      <h2 class="handwritten-title text-5xl sm:text-6xl text-navy mb-6">
+        Sme tu pre <span class="text-folk-pink">vás</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div class="reveal bg-navy border-4 border-folk-pink p-8 shadow-xl">
+        <div class="flex items-center gap-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-pink/30 border-3 border-folk-pink flex items-center justify-center">
+            <span class="material-icons text-folk-pink text-3xl">email</span>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-folk-pink uppercase tracking-wide mb-1">Email</div>
+            <div class="text-lg font-black text-white">correttorun@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal bg-navy border-4 border-folk-blue p-8 shadow-xl">
+        <div class="flex items-center gap-6">
+          <div class="flex-shrink-0 w-16 h-16 bg-folk-blue/30 border-3 border-folk-blue flex items-center justify-center">
+            <span class="material-icons text-folk-blue text-3xl">location_on</span>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-folk-blue uppercase tracking-wide mb-1">Štart / cieľ</div>
+            <div class="text-lg font-black text-white">Kultúrny dom Hronské Kľačany</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal pt-12 border-t-4 border-navy folk-border">
+      <p class="text-center text-xs font-bold text-folk-purple uppercase tracking-widest mb-8">
+        Partneri podujatia
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-12 opacity-70">
+
+        <div class="w-32 h-32 border-3 border-navy flex items-center justify-center">
+          <img src="CORRETTO_CLUB_circle_only%20(4).png"
+               alt="Corretto"
+               class="w-20 h-20 object-contain">
+        </div>
+
+        <div class="w-32 h-32 border-3 border-navy flex items-center justify-center">
+          <img src="Obrázok1.jpg"
+               alt="HK"
+               class="w-20 h-20 object-contain">
+        </div>
+
+        <div class="w-32 h-32 border-3 border-navy flex items-center justify-center">
+          <img src="Obrázok2.png"
+               alt="ST"
+               class="w-20 h-20 object-contain">
+        </div>
+
+        <div class="w-32 h-32 border-3 border-navy flex items-center justify-center">
+          <img src="Obrázok3.jpg"
+               alt="ST"
+               class="w-20 h-20 object-contain">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Folklórna vlnovka -->
+<div class="folk-wave"></div>
+
+<!-- ====== REGISTRATION ====== -->
+<section id="registration" class="py-24 px-6 folk-pattern-bg">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal folk-card p-12 text-center shadow-2xl bg-white">
+      <div class="w-24 h-24 mx-auto mb-6 bg-folk-pink/20 border-4 border-folk-pink flex items-center justify-center">
+        <span class="material-icons text-folk-pink text-5xl">how_to_reg</span>
+      </div>
+      <h2 class="handwritten-title text-5xl text-navy mb-4">Registrácia</h2>
+      <p class="text-navy/70 text-lg mb-8 max-w-lg mx-auto font-serif">
+        Registrácia prebieha online cez KRIL. Online registrácia končí <strong>30. 4. 2026 o 23:59</strong>.
+
+      </p>
+      <p class="text-sm text-navy/60 font-bold">
+        Otázky k online registrácii: casomiera.kril@gmail.com • Výsledky: kril.sk
+      </p>
+
+      <a href="#" class="inline-flex items-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-black py-4 px-8 border-3 border-navy shadow-xl transition-all uppercase tracking-wide">
+        <span>Otvoriť registračný formulár</span>
+        <span class="material-icons">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="bg-navy text-white py-12 px-6 border-t-8 border-folk-pink">
+  <div class="max-w-5xl mx-auto text-center">
+    <img src="cdlogo.jpg" alt="Logo" class="w-20 h-20 mx-auto mb-4 rounded-full border-4 border-folk-pink" />
+    <div class="handwritten-title text-3xl mb-2">Čilejkárska desina</div>
+    <div class="text-sm text-white/70 mb-6 font-bold">Bežecké podujatie • 2. 5. 2026 • Tekov</div>
+    <div class="text-xs text-white/50">
+      © 2026 Čilejkárska desina. Všetky práva vyhradené.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+<script src="script.js"></script>
