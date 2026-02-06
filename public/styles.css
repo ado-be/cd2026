@@ -171,3 +171,292 @@ section[id] { scroll-margin-top: 100px; }
     background-size: 60px 60px;
     background-repeat: repeat-x;
 }
+
+/* ====== GALÉRIA ====== */
+.wrap {
+    max-width: 1400px;
+    margin: 120px auto 60px;
+    padding: 0 20px;
+}
+
+.wrap h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e3a5f;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0 rgba(233,30,140,.2);
+}
+
+.wrap p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Grid rozloženie pre fotky */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+/* Responsivita pre menšie obrazovky */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* Kartička s fotkou */
+.tile {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #1e3a5f;
+    background: white;
+}
+
+.tile::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid #e91e8c;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.tile:hover::before {
+    opacity: 1;
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(233,30,140,.3);
+}
+
+.tile img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tile:hover img {
+    transform: scale(1.05);
+}
+
+/* Popisok pod fotkou */
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(30,58,95,.95), transparent);
+    color: white;
+    padding: 20px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.tile:hover .caption {
+    opacity: 1;
+}
+
+.caption span:last-child {
+    font-size: 1.5rem;
+    color: #e91e8c;
+}
+
+/* ====== LIGHTBOX ====== */
+.lb {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,31,56,.95);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.lb[aria-hidden="false"] {
+    display: flex;
+}
+
+.lb__panel {
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    border: 3px solid #1e3a5f;
+}
+
+/* Horná lišta */
+.lb__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #1e3a5f;
+    color: white;
+    border-bottom: 3px solid #e91e8c;
+}
+
+.lb__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Caveat', cursive;
+}
+
+.lb__btn {
+    background: #e91e8c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.lb__btn:hover {
+    background: #9b4d96;
+    transform: scale(1.05);
+}
+
+/* Stred - obrázok */
+.lb__stage {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5e6d3;
+    padding: 20px;
+}
+
+.lb__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* Navigačné tlačidlá */
+.lb__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.lb__nav--prev {
+    left: 20px;
+}
+
+.lb__nav--next {
+    right: 20px;
+}
+
+.lb__nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Dolná lišta */
+.lb__bottom {
+    padding: 15px 30px;
+    background: #1e3a5f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 3px solid #e91e8c;
+}
+
+.lb__meta {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.lb__hint {
+    font-size: 0.9rem;
+    color: #f5e6d3;
+}
+
+/* Mobile responsivita pre lightbox */
+@media (max-width: 768px) {
+    .lb__panel {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .lb__top, .lb__bottom {
+        padding: 15px 20px;
+    }
+
+    .lb__title {
+        font-size: 1.2rem;
+    }
+
+    .lb__nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .lb__nav--prev {
+        left: 10px;
+    }
+
+    .lb__nav--next {
+        right: 10px;
+    }
+
+    .lb__hint {
+        display: none;
+    }
+}
