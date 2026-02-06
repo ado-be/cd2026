@@ -17,7 +17,7 @@ const galleryImages = [
 // ========================================
 // HLAVNÝ DOM CONTENT LOADED
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // ====== DRAWER FUNCTIONALITY ======
     const menuBtn = document.getElementById('menuBtn');
@@ -227,3 +227,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+    (function () {
+    // CIEĽ: 2.5.2026 09:00 (lokálny čas)
+    const target = new Date(2026, 4, 2, 9, 0, 0); // month je 0-index: 4 = máj
+
+    const elDays = document.getElementById("cd-days");
+    const elHours = document.getElementById("cd-hours");
+    const elMins = document.getElementById("cd-mins");
+    const elSecs = document.getElementById("cd-secs");
+    const elNote = document.getElementById("cd-note");
+
+    if (!elDays || !elHours || !elMins || !elSecs) return;
+
+    const pad2 = (n) => String(n).padStart(2, "0");
+
+    function tick() {
+    const now = new Date();
+    let diff = target.getTime() - now.getTime();
+
+    if (diff <= 0) {
+    elDays.textContent = "0";
+    elHours.textContent = "00";
+    elMins.textContent = "00";
+    elSecs.textContent = "00";
+    if (elNote) elNote.textContent = "Dnes je deň pretekov! 🎉";
+    return;
+}
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (24 * 3600));
+    const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+
+    elDays.textContent = String(days);
+    elHours.textContent = pad2(hours);
+    elMins.textContent = pad2(mins);
+    elSecs.textContent = pad2(secs);
+
+    if (elNote) elNote.textContent = "Štart 2. 5. 2026 o 9:00";
+}
+
+    tick();
+    setInterval(tick, 1000);
+})();
+

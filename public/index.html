@@ -260,8 +260,38 @@
     <p class="text-xl sm:text-2xl text-folk-cream mb-12 max-w-2xl mx-auto leading-relaxed font-serif">
       10 km, 5 km a detské behy. Príď si zabehnúť, povzbudiť alebo stráviť deň s komunitou.
     </p>
+    <!-- COUNTDOWN -->
+    <div class="mt-10 mb-16 inline-block bg-white/10 backdrop-blur border-4 border-white/70 shadow-xl px-6 py-5">
+      <div class="text-xs font-black uppercase tracking-widest text-folk-cream/90 mb-3">
+        Štart už o
+      </div>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="grid grid-cols-4 gap-3 sm:gap-4 min-w-[280px]">
+        <div class="bg-navy/70 border-2 border-white/60 px-4 py-3 shadow">
+          <div id="cd-days" class="handwritten-title text-4xl sm:text-9xl text-white leading-none">—</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white/80 uppercase tracking-wider mt-1">dní</div>
+        </div>
+
+        <div class="bg-navy/70 border-2 border-white/60 px-4 py-3 shadow">
+          <div id="cd-hours" class="handwritten-title text-4xl sm:text-9xl text-white leading-none">—</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white/80 uppercase tracking-wider mt-1">hod</div>
+        </div>
+
+        <div class="bg-navy/70 border-2 border-white/60 px-4 py-3 shadow">
+          <div id="cd-mins" class="handwritten-title text-4xl sm:text-9xl text-white leading-none">—</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white/80 uppercase tracking-wider mt-1">min</div>
+        </div>
+
+        <div class="bg-navy/70 border-2 border-white/60 px-4 py-3 shadow">
+          <div id="cd-secs" class="handwritten-title text-4xl sm:text-9xl text-white leading-none">—</div>
+          <div class="text-[11px] sm:text-xs font-bold text-white/80 uppercase tracking-wider mt-1">sek</div>
+        </div>
+      </div>
+
+      <div id="cd-note" class="mt-3 text-xs font-bold text-white/70"></div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-5 justify-center">
       <a href="#registration"
          class="inline-flex items-center justify-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-black py-5 px-10 border-4 border-white shadow-xl hover:shadow-2xl transition-all text-lg uppercase tracking-wide">
         <span>Zaregistruj sa teraz</span>
@@ -273,7 +303,9 @@
       </a>
     </div>
   </div>
-</section>
+
+
+  </section>
 
 
 
