@@ -64,6 +64,14 @@ section[id] { scroll-margin-top: 100px; }
     transform: translate(-50%, -50%);
     text-shadow: 0 0 20px rgba(233,30,140,.3);
 }
+.cards {
+    position: relative; /* alebo úplne odstráň */
+    margin-top: -120px; /* ak chceš presah */
+}
+.section-next {
+    padding-top: 160px;
+}
+
 
 /* Vyšívaný pattern */
 .embroidery-pattern {
