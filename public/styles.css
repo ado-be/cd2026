@@ -188,6 +188,34 @@ section[id] { scroll-margin-top: 100px; }
     font-family: 'Caveat', cursive;
     font-weight: 700;
     text-shadow: 2px 2px 0 rgba(233,30,140,.2);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Zabránenie pretečeniu textov */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.break-words {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Flexbox helper pre zabránenie pretečeniu */
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.min-w-0 {
+    min-width: 0;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
 }
 
 /* Card s folklórnym rámom */
@@ -588,4 +616,88 @@ section[id] { scroll-margin-top: 100px; }
     .lb__hint {
         display: none;
     }
+
+    /* Overflow fixes pre malé obrazovky */
+    .handwritten-title {
+        font-size: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    /* Info boxy */
+    .folk-card {
+        overflow: hidden;
+    }
+
+    .folk-card * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .handwritten-title {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    /* Menšie paddinge pre malé obrazovky */
+    .p-8 {
+        padding: 1rem;
+    }
+
+    .px-8 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .py-8 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/* Oprava overflow vo všetkých boxoch */
+.bg-navy, .folk-card, .bg-white {
+    overflow: hidden;
+}
+
+.bg-navy *, .folk-card *, .bg-white * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Responzívne fonty pre menšie obrazovky */
+@media (max-width: 640px) {
+    .text-2xl {
+        font-size: 1.25rem !important;
+        line-height: 1.75rem !important;
+    }
+
+    .text-3xl {
+        font-size: 1.5rem !important;
+        line-height: 2rem !important;
+    }
+
+    .text-4xl {
+        font-size: 1.75rem !important;
+        line-height: 2.25rem !important;
+    }
+
+    .text-5xl {
+        font-size: 2rem !important;
+        line-height: 1 !important;
+    }
+
+    .text-6xl {
+        font-size: 2.5rem !important;
+        line-height: 1 !important;
+    }
+}
+
+/* Flex item protection */
+.flex.items-start, .flex.items-center {
+    min-width: 0;
+}
+
+.flex.items-start > *, .flex.items-center > * {
+    min-width: 0;
 }
