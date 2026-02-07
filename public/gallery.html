@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +13,7 @@
     <!-- Fonts / Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Italiana&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Italiana&family:Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -45,46 +45,46 @@
 
 <body class="font-sans bg-folk-cream text-navy">
 
-
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-primary shadow-lg">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-primary shadow-lg transition-shadow">
     <div class="folk-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16 sm:h-20">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-4 group">
+                <a href="index.html" class="flex items-center gap-2 sm:gap-4 group">
                     <div class="relative">
                         <img src="cdlogo.jpg" alt="Logo Čilejkárska desina"
-                             class="w-14 h-14 rounded-full border-4 border-folk-pink shadow-lg" />
+                             class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-3 sm:border-4 border-folk-pink shadow-lg" />
                     </div>
                     <div class="hidden sm:block">
-                        <div class="handwritten-title text-3xl text-primary">
+                        <div class="handwritten-title text-2xl sm:text-3xl text-primary">
                             Čilejkárska <span class="text-folk-pink">DESINA</span>
                         </div>
                         <div class="text-xs font-bold text-folk-purple uppercase tracking-wider">2.5.2026 • Tekov</div>
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-2">
-                    <a href="index.html#about" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">O pretekoch</a>
-                    <a href="index.html#propozicie" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Propozície</a>
-                    <a href="index.html#route" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Trasa</a>
-                    <a href="index.html#contact" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Kontakt</a>
-                    <a href="gallery.html" class="px-4 py-2 font-bold text-primary hover:text-folk-pink transition">Galéria</a>
+                <!-- Desktop Menu - skryté na mobile -->
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="index.html#about" class="px-3 xl:px-4 py-2 font-bold text-sm xl:text-base text-primary hover:text-folk-pink transition">O pretekoch</a>
+                    <a href="index.html#propozicie" class="px-3 xl:px-4 py-2 font-bold text-sm xl:text-base text-primary hover:text-folk-pink transition">Propozície</a>
+                    <a href="index.html#route" class="px-3 xl:px-4 py-2 font-bold text-sm xl:text-base text-primary hover:text-folk-pink transition">Trasa</a>
+                    <a href="index.html#contact" class="px-3 xl:px-4 py-2 font-bold text-sm xl:text-base text-primary hover:text-folk-pink transition">Kontakt</a>
+                    <a href="gallery.html" class="px-3 xl:px-4 py-2 font-bold text-sm xl:text-base text-primary hover:text-folk-pink transition">Galéria</a>
                 </div>
 
                 <!-- CTA + Menu -->
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 sm:gap-3">
                     <a href="index.html#registration"
-                       class="hidden sm:inline-flex items-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-6 py-3 border-2 border-navy shadow-lg transition-all">
-                        <span class="material-icons text-lg">how_to_reg</span>
-                        <span>Registrácia</span>
+                       class="hidden md:inline-flex items-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base border-2 border-navy shadow-lg transition-all">
+                        <span class="material-icons text-base lg:text-lg">how_to_reg</span>
+                        <span class="hidden lg:inline">Registrácia</span>
+                        <span class="lg:hidden">Registr.</span>
                     </a>
 
                     <button id="menuBtn"
-                            class="p-2.5 text-primary hover:bg-folk-pink hover:text-white border-2 border-primary transition"
+                            class="p-2 sm:p-2.5 text-primary hover:bg-folk-pink hover:text-white border-2 border-primary transition rounded"
                             aria-label="Menu">
-                        <span class="material-icons">menu</span>
+                        <span class="material-icons text-xl sm:text-2xl">menu</span>
                     </button>
                 </div>
             </div>
@@ -97,105 +97,115 @@
 
 <!-- ====== FOLKLÓRNY DRAWER ====== -->
 <aside id="drawer"
-       class="fixed top-0 right-0 h-full w-[380px] max-w-[90vw] z-[70]
+       class="fixed top-0 right-0 h-full w-[320px] sm:w-[380px] max-w-[90vw] z-[70]
               bg-folk-cream border-l-4 border-folk-pink shadow-2xl translate-x-full transition-transform duration-300">
     <div class="h-full flex flex-col embroidery-pattern">
         <!-- Header -->
-        <div class="p-6 border-b-4 border-primary bg-white">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center gap-3">
-                    <img src="cdlogo.jpg" class="w-12 h-12 rounded-full border-3 border-folk-pink shadow-md" alt="Logo" />
+        <div class="p-4 sm:p-6 border-b-4 border-primary bg-white">
+            <div class="flex items-center justify-between mb-4 sm:mb-6">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <img src="cdlogo.jpg" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 sm:border-3 border-folk-pink shadow-md" alt="Logo" />
                     <div>
-                        <div class="handwritten-title text-2xl text-primary">Menu</div>
+                        <div class="handwritten-title text-xl sm:text-2xl text-primary">Menu</div>
                         <div class="text-xs text-folk-purple font-bold">Čilejkárska desina</div>
                     </div>
                 </div>
-                <button id="closeBtn" class="p-2 text-primary hover:bg-folk-pink hover:text-white transition border-2 border-primary">
-                    <span class="material-icons">close</span>
+                <button id="closeBtn" class="p-1.5 sm:p-2 text-primary hover:bg-folk-pink hover:text-white transition border-2 border-primary rounded">
+                    <span class="material-icons text-xl sm:text-2xl">close</span>
                 </button>
             </div>
         </div>
 
         <!-- Links -->
-        <div class="flex-1 overflow-y-auto p-6">
-            <div class="space-y-3 mb-8">
-                <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#about">
-                    <div class="w-12 h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center">
-                        <span class="material-icons text-folk-pink text-2xl">info</span>
+        <div class="flex-1 overflow-y-auto p-4 sm:p-6">
+            <div class="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#about">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-pink text-xl sm:text-2xl">info</span>
                     </div>
-                    <div>
-                        <div class="font-bold text-navy">O pretekoch</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">O pretekoch</div>
                         <div class="text-xs text-folk-purple">čo vás čaká</div>
                     </div>
                 </a>
 
-                <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#route">
-                    <div class="w-12 h-12 bg-folk-purple/20 border-2 border-folk-purple flex items-center justify-center">
-                        <span class="material-icons text-folk-purple text-2xl">map</span>
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#route">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-purple/20 border-2 border-folk-purple flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-purple text-xl sm:text-2xl">map</span>
                     </div>
-                    <div>
-                        <div class="font-bold text-navy">Trasa</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">Trasa</div>
                         <div class="text-xs text-folk-purple">mapa + parametre</div>
                     </div>
                 </a>
 
-                <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#propozicie">
-                    <div class="w-12 h-12 bg-folk-green/20 border-2 border-folk-green flex items-center justify-center">
-                        <span class="material-icons text-folk-green text-2xl">description</span>
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#propozicie">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-green/20 border-2 border-folk-green flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-green text-xl sm:text-2xl">description</span>
                     </div>
-                    <div>
-                        <div class="font-bold text-navy">Propozície</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">Propozície</div>
                         <div class="text-xs text-folk-purple">pravidlá + ceny</div>
                     </div>
                 </a>
 
-                <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#contact">
-                    <div class="w-12 h-12 bg-folk-blue/20 border-2 border-folk-blue flex items-center justify-center">
-                        <span class="material-icons text-folk-blue text-2xl">call</span>
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#contact">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-blue/20 border-2 border-folk-blue flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-blue text-xl sm:text-2xl">call</span>
                     </div>
-                    <div>
-                        <div class="font-bold text-navy">Kontakt</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">Kontakt</div>
                         <div class="text-xs text-folk-purple">info + miesto</div>
                     </div>
                 </a>
 
-                <a class="drawerLink flex items-center gap-4 p-4 bg-white border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#registration">
-                    <div class="w-12 h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center">
-                        <span class="material-icons text-folk-pink text-2xl">how_to_reg</span>
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="index.html#registration">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-pink/20 border-2 border-folk-pink flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-pink text-xl sm:text-2xl">how_to_reg</span>
                     </div>
-                    <div>
-                        <div class="font-bold text-navy">Registrácia</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">Registrácia</div>
                         <div class="text-xs text-folk-purple">prihlásiť sa</div>
+                    </div>
+                </a>
+
+                <a class="drawerLink flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white border-2 sm:border-3 border-primary hover:border-folk-pink group transition shadow" href="gallery.html">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-folk-blue/20 border-2 border-folk-blue flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons text-folk-blue text-xl sm:text-2xl">photo_library</span>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-navy text-sm sm:text-base">Galéria</div>
+                        <div class="text-xs text-folk-purple">fotky z podujatia</div>
                     </div>
                 </a>
             </div>
 
             <!-- CTA Buttons -->
-            <div class="space-y-3">
+            <div class="space-y-2 sm:space-y-3">
                 <a href="index.html#registration"
-                   class="drawerLink w-full flex items-center justify-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-6 py-4 border-3 border-navy shadow-lg transition-all">
-                    <span class="material-icons">bolt</span>
+                   class="drawerLink w-full flex items-center justify-center gap-2 bg-folk-pink hover:bg-folk-purple text-white font-bold px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base border-2 sm:border-3 border-navy shadow-lg transition-all">
+                    <span class="material-icons text-lg sm:text-xl">bolt</span>
                     <span>Registrovať sa teraz</span>
                 </a>
                 <a href="https://mapy.com/s/necuhuzuge" target="_blank" rel="noopener"
-                   class="w-full flex items-center justify-center gap-2 bg-white border-3 border-navy
-                  text-navy font-bold px-6 py-4 hover:bg-folk-cream transition">
-                    <span class="material-icons">open_in_new</span>
+                   class="w-full flex items-center justify-center gap-2 bg-white border-2 sm:border-3 border-navy
+                  text-navy font-bold px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base hover:bg-folk-cream transition">
+                    <span class="material-icons text-lg sm:text-xl">open_in_new</span>
                     <span>Otvoriť trasu</span>
                 </a>
             </div>
         </div>
     </div>
 </aside>
+
 <main class="wrap">
     <h1>Galéria</h1>
     <p>Tu sa zobrazia fotky z podujatia</p>
 
     <section class="grid" id="gallery">
-
+        <!-- Galéria sa načíta pomocou JavaScript -->
     </section>
 </main>
-
 
 <div class="lb" id="lightbox" aria-hidden="true" role="dialog" aria-label="Galéria - náhľad">
     <div class="lb__panel" role="document">
@@ -216,7 +226,6 @@
         </div>
     </div>
 </div>
-
 
 <script src="script.js"></script>
 

@@ -4,15 +4,33 @@ section[id] { scroll-margin-top: 100px; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Folklórny vzor pozadie */
+/* Folklórny vzor pozadie - BOHATŠÍ */
 .folk-pattern-bg {
     background-color: #f5e6d3;
     background-image:
+        /* Hlavné folklórne kvety */
+            radial-gradient(circle at 10% 10%, rgba(233,30,140,.12) 40px, transparent 40px),
+            radial-gradient(circle at 30% 25%, rgba(155,77,150,.12) 35px, transparent 35px),
+            radial-gradient(circle at 50% 15%, rgba(74,144,226,.12) 30px, transparent 30px),
+            radial-gradient(circle at 70% 20%, rgba(95,184,120,.12) 38px, transparent 38px),
+            radial-gradient(circle at 90% 10%, rgba(233,30,140,.12) 32px, transparent 32px),
+            radial-gradient(circle at 15% 40%, rgba(155,77,150,.12) 36px, transparent 36px),
+            radial-gradient(circle at 35% 50%, rgba(74,144,226,.12) 34px, transparent 34px),
+            radial-gradient(circle at 55% 45%, rgba(95,184,120,.12) 40px, transparent 40px),
+            radial-gradient(circle at 75% 55%, rgba(233,30,140,.12) 33px, transparent 33px),
+            radial-gradient(circle at 85% 40%, rgba(155,77,150,.12) 37px, transparent 37px),
+            radial-gradient(circle at 20% 75%, rgba(74,144,226,.12) 35px, transparent 35px),
+            radial-gradient(circle at 40% 80%, rgba(95,184,120,.12) 39px, transparent 39px),
+            radial-gradient(circle at 60% 70%, rgba(233,30,140,.12) 36px, transparent 36px),
+            radial-gradient(circle at 80% 85%, rgba(155,77,150,.12) 34px, transparent 34px),
+            radial-gradient(circle at 95% 75%, rgba(74,144,226,.12) 38px, transparent 38px),
+                /* Geometrické línie */
             repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(233,30,140,.05) 35px, rgba(233,30,140,.05) 70px),
             repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(155,77,150,.05) 35px, rgba(155,77,150,.05) 70px);
+    background-size: 600px 600px;
 }
 
-/* Folklórny ornament border */
+/* Folklórny ornament border - BOHATŠÍ */
 .folk-border {
     border-top: 3px solid #1e3a5f;
     border-bottom: 3px solid #1e3a5f;
@@ -47,7 +65,7 @@ section[id] { scroll-margin-top: 100px; }
     bottom: -8px;
 }
 
-/* Folklórne kvety dekorácia */
+/* Folklórne kvety dekorácia - viac variácií */
 .folk-flower {
     width: 80px;
     height: 80px;
@@ -64,24 +82,105 @@ section[id] { scroll-margin-top: 100px; }
     transform: translate(-50%, -50%);
     text-shadow: 0 0 20px rgba(233,30,140,.3);
 }
-.cards {
-    position: relative; /* alebo úplne odstráň */
-    margin-top: -120px; /* ak chceš presah */
+
+.folk-flower-small::before {
+    font-size: 30px;
 }
+
+.folk-flower-large::before {
+    font-size: 90px;
+}
+
+/* Nová trieda pre kvetinové okraje sekcií */
+.folk-flower-border {
+    position: relative;
+}
+
+.folk-flower-border::before,
+.folk-flower-border::after {
+    content: "✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿";
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 20px;
+    opacity: 0.3;
+}
+
+.folk-flower-border::before {
+    top: -15px;
+    color: #e91e8c;
+}
+
+.folk-flower-border::after {
+    bottom: -15px;
+    color: #9b4d96;
+}
+
+.cards {
+    position: relative;
+    margin-top: -120px;
+}
+
 .section-next {
     padding-top: 160px;
 }
 
-
-/* Vyšívaný pattern */
+/* Vyšívaný pattern - VÝRAZNE BOHATŠÍ */
 .embroidery-pattern {
     background-image:
-            radial-gradient(circle at 20% 30%, rgba(233,30,140,.15) 2px, transparent 2px),
-            radial-gradient(circle at 60% 70%, rgba(155,77,150,.15) 2px, transparent 2px),
-            radial-gradient(circle at 80% 20%, rgba(74,144,226,.15) 2px, transparent 2px),
-            radial-gradient(circle at 30% 80%, rgba(95,184,120,.15) 2px, transparent 2px);
-    background-size: 40px 40px, 45px 45px, 38px 38px, 42px 42px;
-    background-position: 0 0, 20px 20px, 10px 30px, 30px 10px;
+        /* Veľké kvety */
+            radial-gradient(circle at 15% 20%, rgba(233,30,140,.20) 3px, transparent 3px),
+            radial-gradient(circle at 25% 30%, rgba(155,77,150,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 35% 25%, rgba(74,144,226,.20) 3px, transparent 3px),
+            radial-gradient(circle at 45% 35%, rgba(95,184,120,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 55% 28%, rgba(233,30,140,.20) 3px, transparent 3px),
+            radial-gradient(circle at 65% 32%, rgba(155,77,150,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 75% 22%, rgba(74,144,226,.20) 3px, transparent 3px),
+            radial-gradient(circle at 85% 27%, rgba(95,184,120,.20) 2.5px, transparent 2.5px),
+                /* Stredové kvety */
+            radial-gradient(circle at 20% 50%, rgba(233,30,140,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 30% 55%, rgba(155,77,150,.20) 3px, transparent 3px),
+            radial-gradient(circle at 40% 48%, rgba(74,144,226,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 50% 52%, rgba(95,184,120,.20) 3px, transparent 3px),
+            radial-gradient(circle at 60% 50%, rgba(233,30,140,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 70% 55%, rgba(155,77,150,.20) 3px, transparent 3px),
+            radial-gradient(circle at 80% 48%, rgba(74,144,226,.20) 2.5px, transparent 2.5px),
+                /* Dolné kvety */
+            radial-gradient(circle at 18% 75%, rgba(95,184,120,.20) 3px, transparent 3px),
+            radial-gradient(circle at 28% 80%, rgba(233,30,140,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 38% 72%, rgba(155,77,150,.20) 3px, transparent 3px),
+            radial-gradient(circle at 48% 78%, rgba(74,144,226,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 58% 74%, rgba(95,184,120,.20) 3px, transparent 3px),
+            radial-gradient(circle at 68% 82%, rgba(233,30,140,.20) 2.5px, transparent 2.5px),
+            radial-gradient(circle at 78% 76%, rgba(155,77,150,.20) 3px, transparent 3px),
+            radial-gradient(circle at 88% 80%, rgba(74,144,226,.20) 2.5px, transparent 2.5px),
+                /* Jemné bodky */
+            radial-gradient(circle at 12% 15%, rgba(233,30,140,.15) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 42% 18%, rgba(155,77,150,.15) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 72% 12%, rgba(74,144,226,.15) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 22% 65%, rgba(95,184,120,.15) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 52% 68%, rgba(233,30,140,.15) 1.5px, transparent 1.5px),
+            radial-gradient(circle at 82% 62%, rgba(155,77,150,.15) 1.5px, transparent 1.5px);
+    background-size:
+            40px 40px, 45px 45px, 38px 38px, 42px 42px,
+            40px 40px, 45px 45px, 38px 38px, 42px 42px,
+            40px 40px, 45px 45px, 38px 38px, 42px 42px,
+            40px 40px, 45px 45px, 38px 38px,
+            40px 40px, 45px 45px, 38px 38px, 42px 42px,
+            40px 40px, 45px 45px, 38px 38px, 42px 42px,
+            35px 35px, 37px 37px, 39px 39px,
+            36px 36px, 38px 38px, 40px 40px;
+    background-position:
+            0 0, 20px 20px, 10px 30px, 30px 10px,
+            5px 5px, 25px 25px, 15px 35px, 35px 15px,
+            8px 8px, 22px 22px, 12px 32px, 32px 12px,
+            18px 18px, 28px 28px, 38px 38px,
+            3px 3px, 23px 23px, 13px 33px, 33px 13px,
+            7px 7px, 27px 27px, 17px 37px, 37px 17px,
+            4px 4px, 14px 14px, 24px 24px,
+            9px 9px, 19px 19px, 29px 29px;
 }
 
 /* Handwritten title effect */
@@ -120,12 +219,31 @@ section[id] { scroll-margin-top: 100px; }
     50% { opacity: .8; transform: scale(1.05); }
 }
 
+@keyframes rotate-flower {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    75% { transform: translateX(10px) rotate(5deg); }
+}
+
 .float-animation {
     animation: float 6s ease-in-out infinite;
 }
 
 .pulse-folk {
     animation: pulse-folk 3s ease-in-out infinite;
+}
+
+.rotate-flower {
+    animation: rotate-flower 20s linear infinite;
+}
+
+.sway-flower {
+    animation: sway 4s ease-in-out infinite;
 }
 
 /* Reveal on scroll */
@@ -140,10 +258,10 @@ section[id] { scroll-margin-top: 100px; }
     transform: translateY(0);
 }
 
-/* Folklórna vlnovka */
+/* Folklórna vlnovka - BOHATŠIA S KVETMI */
 .folk-wave {
     position: relative;
-    height: 60px;
+    height: 80px;
     background: transparent;
     overflow: hidden;
 }
@@ -169,15 +287,18 @@ section[id] { scroll-margin-top: 100px; }
 }
 
 .folk-wave::after {
-    content: "";
+    content: "✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀";
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
     right: 0;
-    height: 100%;
-    background: radial-gradient(circle at 30px 30px, transparent 28px, #f5e6d3 29px);
-    background-size: 60px 60px;
-    background-repeat: repeat-x;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 32px;
+    color: #f5e6d3;
+    text-shadow: 2px 2px 4px rgba(30,58,95,0.3);
+    letter-spacing: 15px;
+    opacity: 0.9;
 }
 
 /* ====== GALÉRIA ====== */
