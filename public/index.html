@@ -59,6 +59,12 @@
       },
     };
   </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- GPX loader -->
+  <script src="https://unpkg.com/leaflet-gpx@1.7.0/gpx.js"></script>
+
 </head>
 
 <body class="font-sans bg-folk-cream text-navy">
@@ -238,7 +244,7 @@
       <div class="text-center lg:text-left">
         <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/30 text-white uppercase tracking-widest text-xs font-bold">
           <span class="material-icons text-folk-pink text-sm">place</span>
-          Tekov • 2. máj 2026
+          2. máj 2026
         </span>
 
         <h1 class="mt-6 handwritten-title text-5xl sm:text-6xl xl:text-7xl text-white leading-tight">
@@ -644,24 +650,48 @@
 
     <div class="reveal folk-card overflow-hidden shadow-2xl mb-6">
       <div class="aspect-video">
-        <iframe
-                src="https://mapy.com/s/kohogohuma"
-                class="w-full h-full"
-                style="border:0"
-                loading="lazy"
-                allowfullscreen
-                title="Mapa trate – Čilejkárska desina">
-        </iframe>
+        <!-- MAP HEADER -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 reveal">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-folk-pink/20 border-3 border-folk-pink flex items-center justify-center">
+              <span class="material-icons text-folk-pink text-2xl">route</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wide text-folk-purple">
+                Zobrazená trasa
+              </div>
+              <div id="routeTitle" class="handwritten-title text-3xl text-navy">
+                10 km – hlavná trať
+              </div>
+            </div>
+          </div>
+
+          <!-- SWITCH -->
+          <div class="flex gap-2">
+            <button
+                    id="btn10k"
+                    class="route-switch route-switch--active"
+                    type="button">
+              10 km
+            </button>
+
+            <button
+                    id="btn5k"
+                    class="route-switch"
+                    type="button">
+              5 km
+            </button>
+          </div>
+        </div>
+
+
+        <div id="leafletMap" class="w-full h-full"></div>
       </div>
     </div>
 
-    <div class="flex justify-end mb-8 reveal">
-      <a href="https://mapy.com/s/kohogohuma" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 text-folk-pink hover:text-folk-purple font-bold transition">
-        <span>Otvoriť v Mapy.com</span>
-        <span class="material-icons">open_in_new</span>
-      </a>
-    </div>
+  </div>
+
+
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
       <div class="reveal bg-navy border-4 border-folk-pink p-6 shadow-xl text-center">
@@ -814,7 +844,7 @@
   <div class="max-w-5xl mx-auto text-center">
     <img src="cdlogo.jpg" alt="Logo" class="w-20 h-20 mx-auto mb-4 rounded-full border-4 border-folk-pink" />
     <div class="handwritten-title text-3xl mb-2">Čilejkárska desina</div>
-    <div class="text-sm text-white/70 mb-6 font-bold">Bežecké podujatie • 2. 5. 2026 • Tekov</div>
+    <div class="text-sm text-white/70 mb-6 font-bold">Bežecké podujatie • 2. 5. 2026 </div>
     <div class="text-xs text-white/50">
       © 2026 Čilejkárska desina. Všetky práva vyhradené.
     </div>
