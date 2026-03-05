@@ -28,7 +28,7 @@ const ROUTES = {
 // COUNTDOWN – cieľový čas
 // ========================================
 function initCountdown() {
-    const target = new Date(2026, 4, 30, 9, 0, 0); // 2.5.2026 09:00 (month 0-index)
+    const target = new Date(2026, 4, 30, 9, 0, 0); // 30.5.2026 09:00 (month 0-index)
 
     const elDays = document.getElementById("cd-days");
     const elHours = document.getElementById("cd-hours");
