@@ -207,14 +207,7 @@
         <h1 class="handwritten-title text-4xl sm:text-5xl lg:text-6xl text-navy mb-6 mt-8 sm:mt-12">
             Vaše <span class="text-folk-pink">spomienky</span>
         </h1>
-        <div class="bg-white/90 p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
-            <p class="text-lg text-navy leading-relaxed font-serif mb-4">
-                Tu sa zobrazia <strong>vaše fotografie</strong> z Čilejkárskej desiny.
-            </p>
-            <p class="text-base text-navy/70 leading-relaxed font-serif">
-                Atmosféra podujatia, úsmevy bežcov a nezabudnuteľné momenty zachytené objektívom.
-            </p>
-        </div>
+
     </div>
 
     <section class="grid" id="gallery">
@@ -230,23 +223,25 @@
     </section>
 </main>
 
-<div class="lb" id="lightbox" aria-hidden="true" role="dialog" aria-label="Galéria - náhľad">
-    <div class="lb__panel" role="document">
-        <div class="lb__top">
+<div class="lb" id="lightbox" aria-hidden="true">
 
-        </div>
+    <button id="lbClose" class="lb-btn lb-close">✕</button>
 
+    <button id="lbPrev" class="lb-btn lb-prev">❮</button>
 
-
-
+    <div class="lb-stage" id="lbStage">
+        <img id="lbImg" src="" alt="">
     </div>
+
+    <button id="lbNext" class="lb-btn lb-next">❯</button>
+
 </div>
 
 <footer class="bg-navy text-white py-8 sm:py-12 px-4 sm:px-6 border-t-6 sm:border-t-8 border-folk-pink mt-16">
     <div class="max-w-5xl mx-auto text-center">
         <img src="cdlogo.jpg" alt="Logo" class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4 rounded-full border-3 sm:border-4 border-folk-pink" />
         <div class="handwritten-title text-2xl sm:text-3xl mb-2 break-words">Čilejkárska desina</div>
-        <div class="text-sm text-white/70 mb-4 sm:mb-6 font-bold">Bežecké podujatie • 9. 5. 2026</div>
+        <div class="text-sm text-white/70 mb-4 sm:mb-6 font-bold">Bežecké podujatie • 30. 5. 2026</div>
         <div class="text-xs text-white/50 break-words px-4">
             © 2026 Čilejkárska desina. Všetky práva vyhradené.
         </div>
