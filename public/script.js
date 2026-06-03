@@ -1,10 +1,7 @@
 // ========================================
 // KONFIGURÁCIA – GALÉRIA (TU PRIDAJ SVOJE FOTKY)
 // ========================================
-const galleryImages = [
-    // { src: 'Obrázok3.jpg', title: 'Štart – Čilejkárska desina' },
-    // { src: 'images/foto2.jpg', title: 'Trať – Tekov' },
-];
+
 
 // ========================================
 // KONFIGURÁCIA – MAPY (GPX + Mapy.com linky)
@@ -135,61 +132,41 @@ function initGallery() {
     const gallery = document.getElementById("gallery");
     if (!gallery) return;
 
-    if (!Array.isArray(galleryImages) || galleryImages.length === 0) {
-        // nič negenerujeme, nech stránka nepadá
+    const photos = window.galleryImages;
+
+    if (!Array.isArray(photos) || photos.length === 0) {
         return;
     }
 
-    galleryImages.forEach((image) => {
+    gallery.innerHTML = "";
+
+    photos.forEach((image, index) => {
         const figure = document.createElement("figure");
         figure.className = "tile";
-        figure.dataset.full = image.src;
-        figure.dataset.title = image.title;
 
         figure.innerHTML = `
-      <img src="${image.src}" alt="${image.title}" loading="lazy">
-      <figcaption class="caption">
-        <span>${image.title}</span>
-        <span>⤢</span>
-      </figcaption>
-    `;
+            <img src="${image.src}" alt="${image.title}" loading="lazy">
+            <figcaption class="caption">
+                <span>${image.title}</span>
+                <a href="${image.src}" download onclick="event.stopPropagation()">Stiahnuť</a>
+            </figcaption>
+        `;
 
+        figure.addEventListener("click", () => openLightbox(index));
         gallery.appendChild(figure);
     });
 
     const lightbox = document.getElementById("lightbox");
-    if (!lightbox) return;
-
     const lbImg = document.getElementById("lbImg");
-    const lbTitle = document.getElementById("lbTitle");
-    const lbMeta = document.getElementById("lbMeta");
     const lbClose = document.getElementById("lbClose");
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
-    const lbStage = document.getElementById("lbStage");
 
-    if (!lbImg || !lbTitle || !lbMeta || !lbStage) return;
-
-    const tiles = Array.from(document.querySelectorAll(".tile"));
-    let currentIndex = 0;
-    let touchStartX = 0;
-
-    function updateLightbox() {
-        const tile = tiles[currentIndex];
-        if (!tile) return;
-
-        lbImg.src = tile.dataset.full || "";
-        lbImg.alt = tile.dataset.title || "";
-        lbTitle.textContent = tile.dataset.title || "";
-        lbMeta.textContent = `${currentIndex + 1} / ${tiles.length}`;
-
-        if (lbPrev) lbPrev.disabled = currentIndex === 0;
-        if (lbNext) lbNext.disabled = currentIndex === tiles.length - 1;
-    }
+    let current = 0;
 
     function openLightbox(index) {
-        currentIndex = index;
-        updateLightbox();
+        current = index;
+        lbImg.src = photos[current].src;
         lightbox.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
     }
@@ -199,45 +176,31 @@ function initGallery() {
         document.body.style.overflow = "";
     }
 
-    function prevImage() {
-        if (currentIndex > 0) { currentIndex--; updateLightbox(); }
-    }
-
     function nextImage() {
-        if (currentIndex < tiles.length - 1) { currentIndex++; updateLightbox(); }
+        current = (current + 1) % photos.length;
+        lbImg.src = photos[current].src;
     }
 
-    tiles.forEach((tile, idx) => tile.addEventListener("click", () => openLightbox(idx)));
+    function prevImage() {
+        current = (current - 1 + photos.length) % photos.length;
+        lbImg.src = photos[current].src;
+    }
 
-    lbClose?.addEventListener("click", closeLightbox);
-    lbPrev?.addEventListener("click", prevImage);
-    lbNext?.addEventListener("click", nextImage);
+    lbClose.onclick = closeLightbox;
+    lbNext.onclick = nextImage;
+    lbPrev.onclick = prevImage;
 
-    lbStage.addEventListener("click", (e) => {
-        if (e.target === lbStage) closeLightbox();
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
     });
 
     document.addEventListener("keydown", (e) => {
         if (lightbox.getAttribute("aria-hidden") !== "false") return;
 
         if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowLeft") prevImage();
         if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
     });
-
-    lbStage.addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lbStage.addEventListener("touchend", (e) => {
-        const touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        const swipeThreshold = 50;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            diff > 0 ? nextImage() : prevImage();
-        }
-    }, { passive: true });
 }
 
 // ========================================
